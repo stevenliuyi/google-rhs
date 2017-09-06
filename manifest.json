@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+
+  "name": "Right-hand Side",
+  "description": "This extension integrates search results from different sources (e.g. Wikipeida) into Google search results",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": {
+      "16": "icon/icon-16.png",
+      "24": "icon/icon-24.png",
+      "32": "icon/icon-32.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "*://*.google.com/*"
+  ],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "matches": ["*://*.google.com/*"],
+    "css": ["rhs.css"]
+  }],
+  "icons": {
+    "16": "icon/icon-16.png",
+    "32": "icon/icon-32.png",
+    "48": "icon/icon-48.png",
+    "128": "icon/icon-128.png"
+  }
+}

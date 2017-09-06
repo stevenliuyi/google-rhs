@@ -1,0 +1,43 @@
+#rhs .rhs-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#rhs .rhs-view {
+  border: 0;
+  padding: 0;
+  position: relative;
+  width: 424px;
+}
+
+#rhs .rhstc3 .rhs-view {
+  width: 248px;
+}
+
+#rhs .rhstc4 .rhs-view {
+  width: 336px;
+}
+
+#rhs .rhs-view .rhs-footnote {
+  border: none;
+  clear: both;
+  color: #777;
+  font-style: italic;
+  font-size: 11px;
+  text-align: right;
+  line-height: normal;
+  overflow: hidden;
+  padding-top: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#rhs .rhs-content {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border-radius: 2px;
+  line-height: 1.24;
+  margin: 6px -32px 0 2px;
+}
+
