@@ -24,7 +24,8 @@
   },
   "content_scripts": [{
     "matches": ["*://*.google.com/*"],
-    "css": ["rhs.css"]
+    "css": ["rhs.css"],
+    "js": ["js/jquery.js"]
   }],
   "icons": {
     "16": "icon/icon-16.png",
