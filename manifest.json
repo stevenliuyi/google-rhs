@@ -25,7 +25,10 @@
   "content_scripts": [{
     "matches": ["*://*.google.com/*"],
     "css": ["rhs.css"],
-    "js": ["js/jquery.js"]
+    "js": ["js/helper.js",
+           "js/Wikipedia.js",
+           "js/BingDictionary.js",
+           "js/BaiduTranslate.js"]
   }],
   "icons": {
     "16": "icon/icon-16.png",
