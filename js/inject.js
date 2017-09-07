@@ -15,6 +15,8 @@
     fetchBingDictionary(searchQuery)
     fetchWolframAlphaShortAnswer(searchQuery)
     fetchWolframAlpha(searchQuery)
+    fetchTwitter(searchQuery, 'en')
+    fetchTwitter(searchQuery, 'zh-cn')
     fetchBaiduTranslate(searchQuery, 'en')
     fetchBaiduTranslate(searchQuery, 'zh')
     fetchNetSpeak(searchQuery)

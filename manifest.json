@@ -18,7 +18,8 @@
     "storage",
     "*://*.google.com/*",
     "https://api.wolframalpha.com/*",
-    "https://xtk.azurewebsites.net/*"
+    "https://xtk.azurewebsites.net/*",
+    "https://api.twitter.com/*"
   ],
   "background": {
     "scripts": ["js/background.js"],
@@ -32,7 +33,8 @@
            "js/BingDictionary.js",
            "js/BaiduTranslate.js",
            "js/WolframAlpha.js",
-           "js/NetSpeak.js"]
+           "js/NetSpeak.js",
+           "js/Twitter.js"]
   }],
   "icons": {
     "16": "icon/icon-16.png",
