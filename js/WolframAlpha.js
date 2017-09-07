@@ -42,7 +42,8 @@ function fetchWolframAlphaShortAnswer(searchQuery) {
   fetch(`https://cors-anywhere.herokuapp.com/https://api.wolframalpha.com/v1/result?${queryParams(params,false)}`)
     .then(res => res.text())
     .then(text => {
-         showResults(text,
+         (['Wolfram|Alpha did not understand your input',
+            'No short answer available'].indexOf(text) === -1) && showResults(text,
                      WolframAlphaShortAnswerContent,
                      "from Wolfram Alpha")
        })

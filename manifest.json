@@ -29,7 +29,8 @@
            "js/Wikipedia.js",
            "js/BingDictionary.js",
            "js/BaiduTranslate.js",
-           "js/WolframAlpha.js"]
+           "js/WolframAlpha.js",
+           "js/NetSpeak.js"]
   }],
   "icons": {
     "16": "icon/icon-16.png",

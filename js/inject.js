@@ -17,6 +17,7 @@
     fetchWolframAlpha(searchQuery)
     fetchBaiduTranslate(searchQuery, 'en')
     fetchBaiduTranslate(searchQuery, 'zh')
+    fetchNetSpeak(searchQuery)
 
   })
 })();
