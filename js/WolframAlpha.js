@@ -16,7 +16,7 @@ function fetchWolframAlpha(searchQuery) {
     mag: 0.9
   }
 
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.wolframalpha.com/v2/query?${queryParams(params,false)}`)
+  fetch(`https://api.wolframalpha.com/v2/query?${queryParams(params,false)}`)
     .then(res => res.text())
     .then(text => {
        let xml = document.createElement("xml")
@@ -39,7 +39,7 @@ function fetchWolframAlphaShortAnswer(searchQuery) {
     i: searchQuery
   }
 
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.wolframalpha.com/v1/result?${queryParams(params,false)}`)
+  fetch(`https://api.wolframalpha.com/v1/result?${queryParams(params,false)}`)
     .then(res => res.text())
     .then(text => {
          (['Wolfram|Alpha did not understand your input',

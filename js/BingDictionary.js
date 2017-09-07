@@ -3,7 +3,7 @@ function fetchBingDictionary(searchQuery) {
     'Word': searchQuery.replace(/\+/g, " "),
     'Samples': 'false'
   }
-  fetch(`https://cors-anywhere.herokuapp.com/https://xtk.azurewebsites.net/BingDictService.aspx?${queryParams(params)}`)
+  fetch(`https://xtk.azurewebsites.net/BingDictService.aspx?${queryParams(params)}`)
     .then(res => res.json())
     .then(data => (data.word !== null) &&
             showResults(data,
