@@ -13,6 +13,8 @@
     fetchWikipedia(searchQuery, 'en')
     fetchWikipedia(searchQuery, 'zh')
     fetchBingDictionary(searchQuery)
+    fetchWolframAlphaShortAnswer(searchQuery)
+    fetchWolframAlpha(searchQuery)
     fetchBaiduTranslate(searchQuery, 'en')
     fetchBaiduTranslate(searchQuery, 'zh')
 

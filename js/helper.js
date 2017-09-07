@@ -34,7 +34,7 @@ window.languageText = function(lang){
       lang_text = "Chinese"
       break
     default:
-      console.log(`Cannot find lanugage code ${lang}!`)
+      console.log(`Cannot find language code ${lang}!`)
   }
 
   return lang_text
