@@ -1,5 +1,9 @@
 function onUpdated(tabId, changeInfo, tab) {
   
+  if (tab.url.indexOf('google') !== -1) {
+    chrome.pageAction.show(tab.id)
+  }
+
   chrome.storage.local.get({
     paused: false
   }, function(result) {
