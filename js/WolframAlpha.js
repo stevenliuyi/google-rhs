@@ -53,37 +53,33 @@ function fetchWolframAlphaShortAnswer(searchQuery) {
 function WolframAlphaContent(results, content, searchQuery) {
 
   Array.from(results).slice(0,2).map( image => {
-  let item = document.createElement("div")
-  item.className = "rhs-item"
-  item.appendChild(image)
+    let item = $('<div/>', { class: 'rhs-item' })
+    item.append(image)
 
-  content.appendChild(item)
+    content.append(item)
   })
 
-  let item_more = document.createElement("div")
-  item_more.className = "rhs-item"
+  let item_more = $('<div/>', {
+    class: 'rhs-item',
+    html: `<a href="http://www.wolframalpha.com/input/?i=${searchQuery}">more...</a>`
+  })
 
-  let more = document.createElement("div")
-  more.innerHTML = `<a href="http://www.wolframalpha.com/input/?i=${searchQuery}">more...</a>`
-  item_more.appendChild(more)
-
-  content.appendChild(item_more)
+  content.append(item_more)
 }
 
 function WolframAlphaShortAnswerContent(results, content) {
 
-  let item = document.createElement("div")
-  item.className = "rhs-item"
+  let item = $('<div/>', { class: 'rhs-item' })
 
-  let title = document.createElement("div")
-  title.innerHTML = "<b>Short Answer</b>"
+  let title = $('<div/>', {
+    html: '<b>Short Answer</b>'
+  })
   
-  let answer = document.createElement("div")
-  answer.innerHTML = results
+  let answer = $('<div/>', {
+    html: results
+  })
+  item.append(title).append(answer)
 
-  item.appendChild(title)
-  item.appendChild(answer)
-
-  content.appendChild(item)
+  content.append(item)
 }
 

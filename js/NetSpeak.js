@@ -15,16 +15,16 @@ function fetchNetSpeak(searchQuery) {
 
 function NetSpeakContent(results, content) {
   
-  let item = document.createElement("div")
-  item.className = "rhs-item"
+  let item = $('<div/>', { class: 'rhs-item' })
 
   results['4'].map( result => {
-    let words = document.createElement("div")
     const w = result['3'].reduce((a, b) => `${a} ${b['2']}`, "")
-    words.innerHTML = `<b>${w}</b> - ${Intl.NumberFormat().format(result['2'])} (${(result['2']/results['7']*100).toFixed(2)}%)`
+    let words = $('<div/>', {
+      html: `<b>${w}</b> - ${Intl.NumberFormat().format(result['2'])} (${(result['2']/results['7']*100).toFixed(2)}%)`
+    })
 
-    item.appendChild(words)
+    item.append(words)
   })
 
-  content.appendChild(item)
+  content.append(item)
 }

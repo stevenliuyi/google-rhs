@@ -27,21 +27,17 @@ function fetchBaiduTranslate(searchQuery, lang) {
 }
 
 function BaiduTranslateContent(results, content) {
-  let item_source = document.createElement("div")
-  item_source.className = "rhs-item"
-  let source = document.createElement("div")
-  source.innerHTML = `<b>${languageText(results.from)} text:</b> ${results.trans_result[0].src}</b>`
+  let item_source = $('<div/>', {
+    class: 'rhs-item',
+    html: `<b>${languageText(results.from)} text:</b> ${results.trans_result[0].src}</b>`
+  })
 
-  item_source.appendChild(source)
+  let item_target = $('<div/>', {
+    class: 'rhs-item',
+    html: `<b>${languageText(results.to)} translation:</b> ${results.trans_result[0].dst}</b>`
+  })
 
-  let item_target = document.createElement("div")
-  item_target.className = "rhs-item"
-  let target = document.createElement("div")
-  target.innerHTML = `<b>${languageText(results.to)} translation:</b> ${results.trans_result[0].dst}</b>`
-  item_target.appendChild(target)
-
-  content.appendChild(item_source)
-  content.appendChild(item_target)
+  content.append(item_source).append(item_target)
 }
 
 

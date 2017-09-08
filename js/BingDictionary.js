@@ -14,31 +14,27 @@ function fetchBingDictionary(searchQuery) {
 
 function BingDictionaryContent(results, content) {
 
-  let item = document.createElement("div")
-  item.className = "rhs-item"
+  let item = $('<div/>', { class: 'rhs-item' })
 
-  let word = document.createElement("div")
-  word.innerHTML = `<b>${results.word}</b>`
+  let word = $('<div/>', { html: `<b>${results.word}</b>` })
   
-  let pronunciation = document.createElement("div")
-  pronunciation.className = "grey-text"
-  pronunciation.innerHTML = (results.pronunciation !== null) ?
+  let pronunciation = $('<div/>', {
+    class: 'grey-text',
+    html: (results.pronunciation !== null) ?
     `US [${results.pronunciation.AmE}] UK[${results.pronunciation.BrE}]` :
     ""
-
-  item.appendChild(word)
-  item.appendChild(pronunciation)
-
-  let item_defs = document.createElement("div")
-  item_defs.className = "rhs-item reduce-space"
-
-  results.defs.map( result => {
-    let definition = document.createElement("div")
-    definition.innerHTML = `<b>${result.pos}</b> ${result.def}`
-    item_defs.appendChild(definition)
   })
 
-  content.appendChild(item)
-  content.appendChild(item_defs)
+  item.append(word)
+  item.append(pronunciation)
+
+  let item_defs = $('<div/>', { class: 'rhs-item reduce-space' })
+
+  results.defs.map( result => {
+    let definition = $('<div/>', { html: `<b>${result.pos}</b> ${result.def}` })
+    item_defs.append(definition)
+  })
+
+  content.append(item).append(item_defs)
 }
 

@@ -28,7 +28,8 @@
   "content_scripts": [{
     "matches": ["*://*.google.com/*"],
     "css": ["css/rhs.css"],
-    "js": ["js/helper.js",
+    "js": ["js/jquery.min.js",
+           "js/helper.js",
            "js/Wikipedia.js",
            "js/BingDictionary.js",
            "js/BaiduTranslate.js",

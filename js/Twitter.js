@@ -27,20 +27,19 @@ function fetchTwitter(searchQuery, lang) {
 function TwitterContent(results, content) {
 
   results.slice(0,3).map( result => {
-    let item = document.createElement("div")
-    item.className = "rhs-item"
+    let item = $('<div/>', { class: 'rhs-item' })
 
-    let info = document.createElement("div")
-    info.className = 'grey-text'
-    info.innerHTML = `<a href="https://twitter.com/${result.user.screen_name}">${result.user.name}</a> @${result.user.screen_name} ${result.created_at.substring(4, 10)} ${result.created_at.substring(result.created_at.length-4)}`
+    let info = $('<div/>', {
+      class: 'grey-text',
+      html: `<a href="https://twitter.com/${result.user.screen_name}">${result.user.name}</a> @${result.user.screen_name} ${result.created_at.substring(4, 10)} ${result.created_at.substring(result.created_at.length-4)}`
+    })
+      
+    let text = $('<div/>', { html: result.text })
 
-    let text = document.createElement("div")
-    text.innerHTML = result.text
+    item.append(text)
+    item.append(info)
 
-    item.appendChild(text)
-    item.appendChild(info)
-
-    content.appendChild(item)
+    content.append(item)
  
   })
 

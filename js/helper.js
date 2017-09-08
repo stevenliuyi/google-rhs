@@ -1,20 +1,18 @@
 window.showResults = function(results, fillContent, footnote_text, options) {
-  let rhs = document.getElementById("rhs_block")
-  let site = document.createElement("div")
-  site.className = "g rhs-view"
 
-  content = document.createElement("div")
-  content.className = "rhs-content"
+  let site = $('<div/>', { class: 'g rhs-view' })
+
+  let content = $('<div/>', { class: 'rhs-content' }) 
 
   fillContent(results, content, options)
 
-  let footnote = document.createElement("div")
-  footnote.className="rhs-view rhs-footnote"
-  footnote.innerHTML = footnote_text
+  let footnote = $('<div/>', {
+    class: 'rhs-view rhs-footnote',
+    html: footnote_text
+  })
 
-  site.appendChild(content)
-  site.appendChild(footnote)
-  rhs.appendChild(site) 
+  site.append(content).append(footnote)
+  $('#rhs_block').append(site) 
 }
 
 

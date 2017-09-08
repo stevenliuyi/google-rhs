@@ -21,17 +21,21 @@ function fetchWikipedia(searchQuery, lang) {
 
 function WikipediaContent(results, content, lang) {
   results.map(result => {
-    let item = document.createElement("div")
-    item.className = "rhs-item"
+    let item = $('<div/>', { class: 'rhs-item' })
 
-    let title = document.createElement("div")
-    title.innerHTML = `<a href="https://${lang}.wikipedia.org/wiki?curid=${result.pageid}">${result.title}</a>`
+    let title = $('<div/>').append(
+      $('<a/>', {
+        href: `https://${lang}.wikipedia.org/wiki?curid=${result.pageid}`,
+        text: result.title
+      })
+    )
 
-    let snippet = document.createElement("div")
-    snippet.innerHTML = `${result.snippet}...`
+    let snippet = $('<div/>', {
+      html: `${result.snippet}...`
+    })
 
-    item.appendChild(title)
-    item.appendChild(snippet)
-    content.appendChild(item)
+    item.append(title).append(snippet)
+
+    content.append(item)
   })
 }
