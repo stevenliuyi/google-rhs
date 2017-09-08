@@ -8,26 +8,24 @@
   <head>
     <title>Right-hand Side</title>
     <style>
-      body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
+      html {
+        font-size: 12px;
         min-width: 300px;
       }
-
-      h1 {
-        font-size: large;
-      }
-
-      p {
-        font-size: small;
-        color: #777;
-      }
-
     </style>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css"></link>
   </head>
   <body>
-    <h1>Right-hand Side</h1>
-    <p>This Chrome extension integrates contents from different sources (e.g. Wikipedia) into Google search results.</p>
+    <div class="container mt-3 mb-3">
+      <p class="h5">Right-hand Side</p>
+      <p class="text-muted">This Chrome extension integrates contents from different sources (e.g. Wikipedia) into Google search results.</p>
+
+      <button id="pause" type="button" class="btn btn-primary btn-sm">Pause RHS</button>
+      <button id="options" type="button" class="btn btn-primary btn-sm">Options</button>
+    </div>
   </body>
 </html>
 

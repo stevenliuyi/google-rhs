@@ -10,16 +10,26 @@
     // get search query
     const searchQuery = result.searchQuery
 
-    fetchWikipedia(searchQuery, 'en')
-    fetchWikipedia(searchQuery, 'zh')
-    fetchBingDictionary(searchQuery)
-    fetchWolframAlphaShortAnswer(searchQuery)
-    fetchWolframAlpha(searchQuery)
-    fetchTwitter(searchQuery, 'en')
-    fetchTwitter(searchQuery, 'zh-cn')
-    fetchBaiduTranslate(searchQuery, 'en')
-    fetchBaiduTranslate(searchQuery, 'zh')
-    fetchNetSpeak(searchQuery)
+    // read options
+    chrome.storage.sync.get({
+      wikipedia: true,
+      wolfram: true, 
+      twitter: true,
+      baidu: true,
+      bing: true,
+      netspeak: true
+    }, function(options) {
+      if (options.wikipedia) fetchWikipedia(searchQuery, 'en')
+      if (options.wikipedia) fetchWikipedia(searchQuery, 'zh')
+      if (options.bing) fetchBingDictionary(searchQuery)
+      if (options.wolfram) fetchWolframAlphaShortAnswer(searchQuery)
+      if (options.wolfram) fetchWolframAlpha(searchQuery)
+      if (options.twitter) fetchTwitter(searchQuery, 'en')
+      if (options.twitter) fetchTwitter(searchQuery, 'zh-cn')
+      if (options.baidu) fetchBaiduTranslate(searchQuery, 'en')
+      if (options.baidu) fetchBaiduTranslate(searchQuery, 'zh')
+      if (options.netspeak) fetchNetSpeak(searchQuery)
+    })
 
   })
 })();

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Right-hand Side Options</title>
+      <style>
+        html { font-size: 12px; }
+      </style>
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="bootstrap.min.css"></link>
+  </head>
+
+  <body>
+    <div class="container pt-3 pb-3">
+      <p class="h5">Sources</p>
+
+      <div class="form-group">
+        <label>Choose the sources you would like to show at the right-hand side of the Google search results:</label>
+        <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="wikipedia" checked>
+                Wikipedia
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="twitter" checked>
+                Twitter
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="bing" checked>
+                Bing Dictionary
+              </label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="wolfram" checked>
+                Wolfram Alpha
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="baidu" checked>
+                Baidu Translate
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="netspeak" checked>
+                Netspeak
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div hidden id="status-alert" class="alert alert-success" role="alert">
+        <div id="status">Options saved.</div>
+      </div>
+      <button type="button" class="btn btn-primary" id="save">Save</button>
+    </div>
+
+    <script src="js/options.js"></script>
+  </body>
+</html>
+

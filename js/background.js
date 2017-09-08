@@ -1,13 +1,22 @@
 function onUpdated(tabId, changeInfo, tab) {
-  const searchQuery = getSearchQuery(tabId, changeInfo, tab)  
+  
+  chrome.storage.local.get({
+    paused: false
+  }, function(result) {
+    // do nothing if the extension is paused
+    if (result.paused) return
 
-  chrome.storage.local.set({
-    searchQuery: searchQuery
-  }, function() {
-       chrome.tabs.executeScript(tab.id, {
-         file: 'js/inject.js'
-       })
+    const searchQuery = getSearchQuery(tabId, changeInfo, tab)  
+
+    chrome.storage.local.set({
+      searchQuery: searchQuery
+    }, function() {
+         chrome.tabs.executeScript(tab.id, {
+           file: 'js/inject.js'
+         })
+    })
   })
+
 }
 
 // obtain search query from the url
