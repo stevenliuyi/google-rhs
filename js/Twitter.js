@@ -1,4 +1,4 @@
-function fetchTwitter(searchQuery, lang) {
+function fetchTwitter(searchQuery, lang, num) {
   const key = encodeURIComponent("HejFYvgc9HdTXktkC2UX6PuQo")
   const secret = encodeURIComponent("rePNCQkzh5iIqLvsxZd1f5TEBjLx0z3WqkPEBhU29fuNBW9CKZ")
   const token = btoa(`${key}:${secret}`)
@@ -22,15 +22,16 @@ function fetchTwitter(searchQuery, lang) {
           .then(res => res.json()).then(data => (data.statuses.length > 0) &&
                   showResults(data.statuses,
                               TwitterContent,
-                              "from Twitter"))
+                              "from Twitter",
+                              num))
           .catch(e => console.log(e))
     })
     .catch(e => console.log(e))
 }
 
-function TwitterContent(results, content) {
+function TwitterContent(results, content, num) {
 
-  results.slice(0,3).map( result => {
+  results.slice(0,num).map( result => {
     let item = $('<div/>', { class: 'rhs-item' })
 
     let info = $('<div/>', {

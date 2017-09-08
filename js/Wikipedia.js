@@ -1,11 +1,11 @@
-function fetchWikipedia(searchQuery, lang) {
+function fetchWikipedia(searchQuery, lang, num) {
   let lang_text = languageText(lang)
 
   let params = {
     'action': 'query',
     'list': 'search',
     'srsearch': searchQuery,
-    'srlimit': 3,
+    'srlimit': num,
     'format': 'json',
     'origin': '*'
   }

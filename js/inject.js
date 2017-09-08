@@ -18,17 +18,36 @@
       baidu: false,
       bing: false,
       netspeak: false,
-      moedict: false
+      moedict: false,
+      wikipedia_n: '3',
+      wikipedia_lang: {0:'en'},
+      wolfram_type: {0:'full'},
+      twitter_n: '3',
+      twitter_lang: {0:'en'},
+      baidu_lang:{0:'en'}
     }, function(options) {
-      if (options.wikipedia) fetchWikipedia(searchQuery, 'en')
-      if (options.wikipedia) fetchWikipedia(searchQuery, 'zh')
+      if (options.wikipedia) {
+        Object.values(options.wikipedia_lang).map(lang =>
+          fetchWikipedia(searchQuery, lang, Number(options.wikipedia_n)))
+      }
+
       if (options.bing) fetchBingDictionary(searchQuery)
-      if (options.wolfram) fetchWolframAlphaShortAnswer(searchQuery)
-      if (options.wolfram) fetchWolframAlpha(searchQuery)
-      if (options.twitter) fetchTwitter(searchQuery, 'en')
-      if (options.twitter) fetchTwitter(searchQuery, 'zh-cn')
-      if (options.baidu) fetchBaiduTranslate(searchQuery, 'en')
-      if (options.baidu) fetchBaiduTranslate(searchQuery, 'zh')
+
+      if (options.wolfram && Object.values(options.wolfram_type).includes('short'))
+        fetchWolframAlphaShortAnswer(searchQuery)
+      if (options.wolfram && Object.values(options.wolfram_type).includes('full'))
+        fetchWolframAlpha(searchQuery)
+
+      if (options.twitter) {
+        Object.values(options.twitter_lang).map(lang =>
+          fetchTwitter(searchQuery, lang, Number(options.twitter_n)))
+      }
+
+      if (options.baidu) {
+        Object.values(options.baidu_lang).map(lang =>
+          fetchBaiduTranslate(searchQuery, lang))
+      }
+
       if (options.netspeak) fetchNetSpeak(searchQuery)
       if (options.moedict) fetchMoeDict(searchQuery)
     })
