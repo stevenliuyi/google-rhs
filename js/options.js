@@ -6,6 +6,7 @@ function save_options() {
   let baidu = document.getElementById('baidu').checked;
   let bing = document.getElementById('bing').checked;
   let netspeak = document.getElementById('netspeak').checked;
+  let moedict = document.getElementById('moedict').checked;
 
   chrome.storage.sync.set({
     wikipedia,
@@ -13,7 +14,8 @@ function save_options() {
     twitter,
     baidu,
     bing,
-    netspeak
+    netspeak,
+    moedict
   }, function() {
     // Update status to let user know options were saved.
     $('#status-alert').removeAttr('hidden')
@@ -33,7 +35,8 @@ function restore_options() {
     twitter: true,
     baidu: false,
     bing: false,
-    netspeak: false
+    netspeak: false,
+    moedict: false
   }, function(items) {
     document.getElementById('wikipedia').checked = items.wikipedia;
     document.getElementById('wolfram').checked = items.wolfram;

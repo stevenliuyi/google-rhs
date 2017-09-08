@@ -15,9 +15,10 @@
       wikipedia: true,
       wolfram: true, 
       twitter: true,
-      baidu: true,
-      bing: true,
-      netspeak: true
+      baidu: false,
+      bing: false,
+      netspeak: false,
+      moedict: false
     }, function(options) {
       if (options.wikipedia) fetchWikipedia(searchQuery, 'en')
       if (options.wikipedia) fetchWikipedia(searchQuery, 'zh')
@@ -29,6 +30,7 @@
       if (options.baidu) fetchBaiduTranslate(searchQuery, 'en')
       if (options.baidu) fetchBaiduTranslate(searchQuery, 'zh')
       if (options.netspeak) fetchNetSpeak(searchQuery)
+      if (options.moedict) fetchMoeDict(searchQuery)
     })
 
   })
