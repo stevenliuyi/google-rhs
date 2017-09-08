@@ -4,6 +4,7 @@ function fetchBingDictionary(searchQuery) {
     'Samples': 'false'
   }
   fetch(`https://xtk.azurewebsites.net/BingDictService.aspx?${queryParams(params)}`)
+    .then(handleAPIErrors)
     .then(res => res.json())
     .then(data => (data.word !== null) &&
             showResults(data,

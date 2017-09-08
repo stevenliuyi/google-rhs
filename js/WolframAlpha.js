@@ -17,6 +17,7 @@ function fetchWolframAlpha(searchQuery) {
   }
 
   fetch(`https://api.wolframalpha.com/v2/query?${queryParams(params,false)}`)
+    .then(handleAPIErrors)
     .then(res => res.text())
     .then(text => {
        let xml = document.createElement("xml")
@@ -31,6 +32,7 @@ function fetchWolframAlpha(searchQuery) {
        }
 
     })
+    .catch(e => console.log(e))
 }
 
 function fetchWolframAlphaShortAnswer(searchQuery) {
@@ -40,6 +42,7 @@ function fetchWolframAlphaShortAnswer(searchQuery) {
   }
 
   fetch(`https://api.wolframalpha.com/v1/result?${queryParams(params,false)}`)
+    .then(handleAPIErrors)
     .then(res => res.text())
     .then(text => {
          (['Wolfram|Alpha did not understand your input',
@@ -47,6 +50,7 @@ function fetchWolframAlphaShortAnswer(searchQuery) {
                      WolframAlphaShortAnswerContent,
                      "from Wolfram Alpha")
        })
+    .catch(e => console.log(e))
     
 }
 

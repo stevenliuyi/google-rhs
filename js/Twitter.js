@@ -9,19 +9,23 @@ function fetchTwitter(searchQuery, lang) {
       'Authorization': `Basic ${token}`,
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     }
-  }).then(res => res.json()).then(data => {
-    params = {
-      'q': searchQuery,
-      'lang': lang
-    }
-    fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${queryParams(params)}`,
-      { headers: { 'Authorization': `Bearer ${data.access_token}` } })
-        .then(res => res.json()).then(data => (data.statuses.length > 0) &&
-                showResults(data.statuses,
-                            TwitterContent,
-                            "from Twitter"))
   })
-  .catch(e => console.log(e))
+    .then(handleAPIErrors)
+    .then(res => res.json()).then(data => {
+      params = {
+        'q': searchQuery,
+        'lang': lang
+      }
+      fetch(`https://api.twitter.com/1.1/search/tweets.json?q=${queryParams(params)}`,
+        { headers: { 'Authorization': `Bearer ${data.access_token}` } })
+          .then(handleAPIErrors)
+          .then(res => res.json()).then(data => (data.statuses.length > 0) &&
+                  showResults(data.statuses,
+                              TwitterContent,
+                              "from Twitter"))
+          .catch(e => console.log(e))
+    })
+    .catch(e => console.log(e))
 }
 
 function TwitterContent(results, content) {

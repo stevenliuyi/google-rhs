@@ -5,25 +5,29 @@ function fetchBaiduTranslate(searchQuery, lang) {
   const salt = '123456'
 
   fetch(`https://helloacm.com/api/md5/?s=${appid}${q}${salt}${key}`)
-  .then(res => res.text())
-  .then(sign => {
-    params = {
-      'q': q,
-      'from': 'auto',
-      'to': lang,
-      'appid': appid,
-      'salt': salt,
-      'sign': sign.substring(1, sign.length-1)
-    }
-    fetch(`https://cors-anywhere.herokuapp.com/http://api.fanyi.baidu.com/api/trans/vip/translate?${queryParams(params,false)}`)
-      .then(res => res.json())
-      .then(data => (data.trans_result !== undefined ) &&
-              (data.from !== data.to) &&
-              showResults(data,
-                          BaiduTranslateContent,
-                          "from Baidu Translate"))
+    .then(handleAPIErrors)
+    .then(res => res.text())
+    .then(sign => {
+      params = {
+        'q': q,
+        'from': 'auto',
+        'to': lang,
+        'appid': appid,
+        'salt': salt,
+        'sign': sign.substring(1, sign.length-1)
+      }
+      fetch(`https://cors-anywhere.herokuapp.com/http://api.fanyi.baidu.com/api/trans/vip/translate?${queryParams(params,false)}`)
+        .then(handleAPIErrors)
+        .then(res => res.json())
+        .then(data => (data.trans_result !== undefined ) &&
+                (data.from !== data.to) &&
+                showResults(data,
+                            BaiduTranslateContent,
+                            "from Baidu Translate"))
+        .catch(e => console.log(e))
 
-  })
+    })
+    .catch(e => console.log(e))
 }
 
 function BaiduTranslateContent(results, content) {

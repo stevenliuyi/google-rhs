@@ -11,12 +11,14 @@ function fetchWikipedia(searchQuery, lang) {
   }
 
   fetch(`https://${lang}.wikipedia.org/w/api.php?${queryParams(params)}`)
+    .then(handleAPIErrors)
     .then(res => res.json())
     .then(data => (data.query.search.length !== 0) &&
             showResults(data.query.search,
                               WikipediaContent,
                               `from ${lang_text} Wikipedia`,
                               lang))
+    .catch(e => console.log(e))
 }
 
 function WikipediaContent(results, content, lang) {

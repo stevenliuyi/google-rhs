@@ -38,3 +38,9 @@ window.languageText = function(lang){
   return lang_text
 }
 
+window.handleAPIErrors = function(response) {
+  if (!response.ok) {
+    throw Error(`API error occurred: ${response.status} (${response.statusText})`)
+  }
+  return response
+}

@@ -6,11 +6,13 @@ function fetchNetSpeak(searchQuery) {
   }
 
   fetch(`https://cors-anywhere.herokuapp.com/http://api.netspeak.org/netspeak3/search?${queryParams(params,false)}`)
+    .then(handleAPIErrors)
     .then(res => res.json()).then( data => {
       if (data['4'].length > 1) {
           showResults(data, NetSpeakContent, "from Netspeak")
       }
     })
+    .catch(e => console.log(e))
 }
 
 function NetSpeakContent(results, content) {
