@@ -23,19 +23,19 @@ window.queryParams = function(params, encode=true) {
 }
 
 window.languageText = function(lang){
-  let lang_text=  ""
-  switch(lang) {
-    case 'en':
-      lang_text = "English"
-      break
-    case 'zh':
-      lang_text = "Chinese"
-      break
-    default:
-      console.log(`Cannot find language code ${lang}!`)
+  languages = {
+    'de': 'German',
+    'en': 'English',
+    'es': 'Spanish',
+    'zh': 'Chinese'
   }
 
-  return lang_text
+  if (Object.keys(languages).includes(lang)) {
+    return languages[lang]
+  } else {
+    console.log(`Cannot find language code ${lang}!`)
+    return ''
+  }
 }
 
 window.handleAPIErrors = function(response) {
