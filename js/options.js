@@ -95,7 +95,79 @@ function toggle_page(event) {
  
 }
 
-document.addEventListener('DOMContentLoaded', restore_options);
+function load_wikipedia_lang() {
+  langs = ['ar', 'az', 'be', 'bg', 'ca', 'ce', 'ceb', 'cs', 'da', 'de', 'el', 'eo', 'es', 'et', 'eu', 'fa', 'gl', 'ja', 'ko', 'fi', 'fr', 'hi', 'hr', 'hu', 'hy', 'id', 'it', 'kk', 'min', 'ms', 'nl', 'no', 'nn', 'pl', 'pt', 'ro', 'ru', 'sh', 'simple', 'sk', 'sl', 'sr', 'sv', 'ta', 'th', 'tr', 'uk', 'ur', 'uz', 'vi', 'vo', 'war', 'zh', 'zh-min-nan', 'zh-yue']
+  langs.map ( lang => {
+    $('#wikipedia_lang').append(
+      $('<option/>', {
+        value: lang,
+        id: `wikipedia_${lang}`,
+        text: languageText(lang)
+      })   
+    )
+  })
+  $('#wikipedia_lang option').sort((a,b) => (a.text.localeCompare(b.text))).appendTo('#wikipedia_lang')
+  $('#wikipedia_lang option').sort((a,b) => (a.text.localeCompare(b.text))).appendTo('#wikipedia_lang')
+  $('#wikipedia_lang').prepend(
+    $('<option/>', {
+      value: 'en',
+      id: 'wikipedia_en',
+      text: 'English (default)',
+      selected: ''
+    })
+  )
+}
+
+function load_twitter_lang() {
+  langs = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'msa', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sv', 'th', 'tr', 'uk', 'ur', 'vi', 'zh-cn' ]
+  langs.map ( lang => {
+    $('#twitter_lang').append(
+      $('<option/>', {
+        value: lang,
+        id: `twitter_${lang}`,
+        text: languageText(lang)
+      })   
+    )
+  })
+  $('#twitter_lang option').sort((a,b) => (a.text.localeCompare(b.text))).appendTo('#twitter_lang')
+  $('#twitter_lang').prepend(
+    $('<option/>', {
+      value: 'en',
+      id: 'twitter_en',
+      text: 'English (default)',
+      selected: ''
+    })
+  )
+}
+
+function load_baidu_lang() {
+  langs = ['ara', 'bul', 'cs', 'cht', 'dan', 'de', 'el', 'est', 'fin', 'fra', 'hu', 'kor', 'it', 'jp', 'nl', 'pt', 'rom', 'slo', 'spa', 'swe', 'th', 'ru', 'vie', 'wyw', 'yue', 'zh']
+  langs.map ( lang => {
+    $('#baidu_lang').append(
+      $('<option/>', {
+        value: lang,
+        id: `baidu_${lang}`,
+        text: languageText(lang)
+      })   
+    )
+  })
+  $('#baidu_lang option').sort((a,b) => (a.text.localeCompare(b.text))).appendTo('#baidu_lang')
+  $('#baidu_lang').prepend(
+    $('<option/>', {
+      value: 'en',
+      id: 'baidu_en',
+      text: 'English (default)',
+      selected: ''
+    })
+  )
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  load_wikipedia_lang()
+  load_twitter_lang()
+  load_baidu_lang()
+  restore_options()
+});
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('sources-btn').addEventListener('click', toggle_page);
 document.getElementById('settings-btn').addEventListener('click', toggle_page);
