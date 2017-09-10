@@ -11,6 +11,7 @@ function save_options() {
   let reddit = $('#reddit').prop('checked')
   let daizhige = $('#daizhige').prop('checked')
   let quora = $('#quora').prop('checked')
+  let zhihu = $('#zhihu').prop('checked')
 
   // settings
   let wikipedia_n = $('#wikipedia_n').val()
@@ -22,6 +23,7 @@ function save_options() {
   let reddit_n = $('#reddit_n').val()
   let daizhige_n = $('#daizhige_n').val()
   let quora_n = $('#quora_n').val()
+  let zhihu_n = $('#zhihu_n').val()
 
   chrome.storage.sync.set({
     wikipedia,
@@ -34,6 +36,7 @@ function save_options() {
     reddit,
     daizhige,
     quora,
+    zhihu,
     wikipedia_n,
     wikipedia_lang,
     wolfram_type,
@@ -42,7 +45,8 @@ function save_options() {
     baidu_lang,
     reddit_n,
     daizhige_n,
-    quora_n
+    quora_n,
+    zhihu_n
   }, function() {
     // Update status to let user know options were saved.
     $('#status-alert').removeAttr('hidden')
@@ -67,6 +71,7 @@ function restore_options() {
     reddit: false,
     daizhige: false,
     quora: false,
+    zhihu: false,
     wikipedia_n: '3',
     wikipedia_lang: {0:'en'},
     wolfram_type: {0:'full'},
@@ -75,7 +80,8 @@ function restore_options() {
     baidu_lang: {0:'en'},
     reddit_n: '3',
     daizhige_n: '3',
-    quora_n: '3'
+    quora_n: '3',
+    zhihu_n: '3'
   }, function(items) {
     // sources
     $('#wikipedia').prop('checked', items.wikipedia);
@@ -88,6 +94,7 @@ function restore_options() {
     $('#reddit').prop('checked', items.reddit);
     $('#daizhige').prop('checked', items.daizhige);
     $('#quora').prop('checked', items.quora);
+    $('#zhihu').prop('checked', items.zhihu);
 
     // settings
     $('#wikipedia_n').val(items.wikipedia_n)
@@ -99,6 +106,7 @@ function restore_options() {
     $('#reddit_n').val(items.reddit_n)
     $('#daizhige_n').val(items.daizhige_n)
     $('#quora_n').val(items.quora_n)
+    $('#zhihu_n').val(items.zhihu_n)
 
   });
 }
@@ -112,7 +120,7 @@ function toggle_page(event) {
       break
     case "settings-btn":
       // hide settings for unselected sources
-      ['wikipedia', 'wolfram', 'twitter', 'baidu', 'reddit', 'daizhige', 'quora'].map( source => {
+      ['wikipedia', 'wolfram', 'twitter', 'baidu', 'reddit', 'daizhige', 'quora', 'zhihu'].map( source => {
         if ($(`#${source}`).prop('checked')) {
           $(`#${source}-settings`).removeAttr('hidden')
         } else {
