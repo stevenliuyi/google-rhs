@@ -3,10 +3,12 @@ function fetchZhihu(searchQuery, num) {
     .then(res => res.text())
     .then(html => {
       let results = $($.parseHTML(html)).find('.result-about-list')
-      showResults(results,
-                  ZhihuContent,
-                  "from Zhihu",
-                  num)
+      if (results.length > 0) {
+        showResults(results,
+                    ZhihuContent,
+                    "from Zhihu",
+                    num)
+      }
     })
 }
 
@@ -19,7 +21,6 @@ function ZhihuContent(results, content, num) {
     )
     $(question).find('h4').contents().unwrap()
     $(question).find('em').contents().unwrap()
-    console.log(question)
 
     let count = $('<div/>', { class: 'grey-text' }).append(
       $(result).find('span.count')[0]
@@ -31,7 +32,6 @@ function ZhihuContent(results, content, num) {
     $(answer).find('a').contents().unwrap()
     $(answer).find('p').contents().unwrap()
     $(answer).find('em').contents().unwrap().wrap('<b/>')
-    console.log(answer)
 
     item.append(question).append(count).append(answer)
     content.append(item)

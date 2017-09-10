@@ -3,10 +3,12 @@ function fetchQuora(searchQuery, num) {
     .then(res => res.text())
     .then(html => {
       let results = $($.parseHTML(html)).find('.QuestionQueryResult')
-      showResults(results,
-                  QuoraContent,
-                  "from Quora",
-                  num)
+      if (results.length > 0) {
+        showResults(results,
+                    QuoraContent,
+                    "from Quora",
+                    num)
+      }
     })
 }
 
