@@ -18,7 +18,7 @@ function QuoraContent(results, content, num) {
     let question = $(`<a href="https://www.quora.com${link}"></a>`)
       .append($($(result).find('span.question_text')[0]))
 
-    let answer = $('<div/>')append(
+    let answer = $('<div/>').append(
       $(result).find('span.search_result_snippet')[0]
     )
     $(answer).find('p').contents().unwrap()
