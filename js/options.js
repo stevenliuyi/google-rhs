@@ -8,6 +8,7 @@ function save_options() {
   let bing = $('#bing').prop('checked')
   let netspeak = $('#netspeak').prop('checked')
   let moedict = $('#moedict').prop('checked')
+  let reddit = $('#reddit').prop('checked')
 
   // settings
   let wikipedia_n = $('#wikipedia_n').val()
@@ -16,6 +17,7 @@ function save_options() {
   let twitter_n = $('#twitter_n').val()
   let twitter_lang = $('#twitter_lang').val()
   let baidu_lang = $('#baidu_lang').val()
+  let reddit_n = $('#reddit_n').val()
 
   chrome.storage.sync.set({
     wikipedia,
@@ -25,12 +27,14 @@ function save_options() {
     bing,
     netspeak,
     moedict,
+    reddit,
     wikipedia_n,
     wikipedia_lang,
     wolfram_type,
     twitter_n,
     twitter_lang,
-    baidu_lang
+    baidu_lang,
+    reddit_n
   }, function() {
     // Update status to let user know options were saved.
     $('#status-alert').removeAttr('hidden')
@@ -52,12 +56,14 @@ function restore_options() {
     bing: false,
     netspeak: false,
     moedict: false,
+    reddit: false,
     wikipedia_n: '3',
     wikipedia_lang: {0:'en'},
     wolfram_type: {0:'full'},
     twitter_n: '3',
     twitter_lang: {0:'en'},
-    baidu_lang: {0:'en'}
+    baidu_lang: {0:'en'},
+    reddit_n: '3'
   }, function(items) {
     // sources
     $('#wikipedia').prop('checked', items.wikipedia);
@@ -67,6 +73,7 @@ function restore_options() {
     $('#bing').prop('checked', items.bing);
     $('#netspeak').prop('checked', items.netspeak);
     $('#moedict').prop('checked', items.moedict);
+    $('#reddit').prop('checked', items.reddit);
 
     // settings
     $('#wikipedia_n').val(items.wikipedia_n)
@@ -75,6 +82,7 @@ function restore_options() {
     $('#twitter_n').val(items.twitter_n)
     $('#twitter_lang').val(items.twitter_lang)
     $('#baidu_lang').val(items.baidu_lang)
+    $('#reddit_n').val(items.reddit_n)
   });
 }
 

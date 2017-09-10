@@ -37,7 +37,8 @@
            "js/WolframAlpha.js",
            "js/NetSpeak.js",
            "js/Twitter.js",
-           "js/MoeDict.js"]
+           "js/MoeDict.js",
+           "js/Reddit.js"]
   }],
   "icons": {
     "16": "icon/icon-16.png",
