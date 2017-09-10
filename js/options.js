@@ -91,6 +91,7 @@ function restore_options() {
     $('#baidu_lang').val(items.baidu_lang)
     $('#reddit_n').val(items.reddit_n)
     $('#daizhige_n').val(items.daizhige_n)
+
   });
 }
 
@@ -102,6 +103,14 @@ function toggle_page(event) {
       $('#sources-btn').addClass('active').siblings('button').removeClass('active')
       break
     case "settings-btn":
+      // hide settings for unselected sources
+      ['wikipedia', 'wolfram', 'twitter', 'baidu', 'reddit', 'daizhige'].map( source => {
+        if ($(`#${source}`).prop('checked')) {
+          $(`#${source}-settings`).removeAttr('hidden')
+        } else {
+          $(`#${source}-settings`).attr('hidden', '')
+        }
+      })
       $('#settings').show().siblings('div').hide()
       $('#settings-btn').addClass('active').siblings('button').removeClass('active')
       break

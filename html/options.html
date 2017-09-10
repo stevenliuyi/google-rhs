@@ -98,102 +98,114 @@
         <!-- settings page -->
         <div class="form-group" id="settings" style="display: none">
           <label>Set your preferences for each source:</label>
-          <p class="h5">Wikipedia</p>
-          <div class="form-group row">
-            <label class="col-4 col-form-label">Number of entries</label>
-            <select class="col-7 form-control" id="wikipedia_n">
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3" selected>3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-               <option value="6">6</option>
-               <option value="7">7</option>
-               <option value="8">8</option>
-               <option value="9">9</option>
-               <option value="10">10</option>
-            </select>
-          </div>
-          <div class="form-group row">
-            <div class="col-4">
-            <label class="col-form-label">Languages</label>
-            <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
+          <div id="wikipedia-settings">
+            <p class="h5">Wikipedia</p>
+            <div class="form-group row">
+              <label class="col-4 col-form-label">Number of entries</label>
+              <select class="col-7 form-control" id="wikipedia_n">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3" selected>3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+                 <option value="6">6</option>
+                 <option value="7">7</option>
+                 <option value="8">8</option>
+                 <option value="9">9</option>
+                 <option value="10">10</option>
+              </select>
             </div>
-            <select multiple class="col-7 form-control" id="wikipedia_lang"> </select>
-          </div>
-          <p class="h5">Wolfram Alpha</p>
-          <div class="form-group row">
-            <div class="col-4">
-            <label class="col-form-label">API Types</label>
-            <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
+            <div class="form-group row">
+              <div class="col-4">
+              <label class="col-form-label">Languages</label>
+              <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
+              </div>
+              <select multiple class="col-7 form-control" id="wikipedia_lang"> </select>
             </div>
-            <select multiple class="col-7 form-control" id="wolfram_type">
-               <option value="full" selected>Full Results</option>
-               <option value="short">Short Answers</option>
-            </select>
           </div>
-          <p class="h5">Twitter</p>
-          <div class="form-group row">
-            <label class="col-4 col-form-label">Number of tweets</label>
-            <select class="col-7 form-control" id="twitter_n">
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3" selected>3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-               <option value="6">6</option>
-               <option value="7">7</option>
-               <option value="8">8</option>
-               <option value="9">9</option>
-               <option value="10">10</option>
-            </select>
-          </div>
-          <div class="form-group row">
-            <div class="col-4">
-            <label class="col-form-label">Languages</label>
-            <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
+          <div id="wolfram-settings">
+            <p class="h5">Wolfram Alpha</p>
+            <div class="form-group row">
+              <div class="col-4">
+              <label class="col-form-label">API Types</label>
+              <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
+              </div>
+              <select multiple class="col-7 form-control" id="wolfram_type">
+                 <option value="full" selected>Full Results</option>
+                 <option value="short">Short Answers</option>
+              </select>
             </div>
-            <select multiple class="col-7 form-control" id="twitter_lang"></select>
           </div>
-          <p class="h5">Reddit</p>
-          <div class="form-group row">
-            <label class="col-4 col-form-label">Number of items</label>
-            <select class="col-7 form-control" id="reddit_n">
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3" selected>3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-               <option value="6">6</option>
-               <option value="7">7</option>
-               <option value="8">8</option>
-               <option value="9">9</option>
-               <option value="10">10</option>
-            </select>
-          </div>
-          <p class="h5">Baidu Translate</p>
-          <div class="form-group row">
-            <div class="col-4">
-            <label class="col-form-label">Target languages</label>
-            <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
+          <div id="twitter-settings">
+            <p class="h5">Twitter</p>
+            <div class="form-group row">
+              <label class="col-4 col-form-label">Number of tweets</label>
+              <select class="col-7 form-control" id="twitter_n">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3" selected>3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+                 <option value="6">6</option>
+                 <option value="7">7</option>
+                 <option value="8">8</option>
+                 <option value="9">9</option>
+                 <option value="10">10</option>
+              </select>
             </div>
-            <select multiple class="col-7 form-control" id="baidu_lang"></select>
+            <div class="form-group row">
+              <div class="col-4">
+              <label class="col-form-label">Languages</label>
+              <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
+              </div>
+              <select multiple class="col-7 form-control" id="twitter_lang"></select>
+            </div>
           </div>
-          <p class="h5">Daizhige</p>
-          <div class="form-group row">
-            <label class="col-4 col-form-label">Number of items</label>
-            <select class="col-7 form-control" id="daizhige_n">
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3" selected>3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-               <option value="6">6</option>
-               <option value="7">7</option>
-               <option value="8">8</option>
-               <option value="9">9</option>
-               <option value="10">10</option>
-            </select>
+          <div id="reddit-settings">
+            <p class="h5">Reddit</p>
+            <div class="form-group row">
+              <label class="col-4 col-form-label">Number of items</label>
+              <select class="col-7 form-control" id="reddit_n">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3" selected>3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+                 <option value="6">6</option>
+                 <option value="7">7</option>
+                 <option value="8">8</option>
+                 <option value="9">9</option>
+                 <option value="10">10</option>
+              </select>
+            </div>
+          </div>
+          <div id="baidu-settings">
+            <p class="h5">Baidu Translate</p>
+            <div class="form-group row">
+              <div class="col-4">
+              <label class="col-form-label">Target languages</label>
+              <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
+              </div>
+              <select multiple class="col-7 form-control" id="baidu_lang"></select>
+            </div>
+          </div>
+          <div id="daizhige-settings">
+            <p class="h5">Daizhige</p>
+            <div class="form-group row">
+              <label class="col-4 col-form-label">Number of items</label>
+              <select class="col-7 form-control" id="daizhige_n">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3" selected>3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+                 <option value="6">6</option>
+                 <option value="7">7</option>
+                 <option value="8">8</option>
+                 <option value="9">9</option>
+                 <option value="10">10</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
