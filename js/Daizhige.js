@@ -1,7 +1,6 @@
 function fetchDaizhige(searchQuery, num) {
   // send query to background page since HTTP request cannot be made here
   chrome.runtime.sendMessage({ source: 'Daizhige', query: searchQuery }, res => {
-    console.log(res.html_string)
     const articles = $($.parseHTML(res.html_string)).find('article')
     if (articles.length > 0) {
       showResults(articles,
