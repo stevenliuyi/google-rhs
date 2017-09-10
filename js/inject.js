@@ -21,6 +21,7 @@
       moedict: false,
       reddit: false,
       daizhige: false,
+      quora: false,
       wikipedia_n: '3',
       wikipedia_lang: {0:'en'},
       wolfram_type: {0:'full'},
@@ -28,7 +29,8 @@
       twitter_lang: {0:'en'},
       baidu_lang:{0:'en'},
       reddit_n: '3',
-      daizhige_n: '3'
+      daizhige_n: '3',
+      quora_n: '3'
     }, function(options) {
       if (options.wikipedia) {
         Object.values(options.wikipedia_lang).map(lang =>
@@ -53,6 +55,7 @@
       }
 
       if (options.reddit) fetchReddit(searchQuery, Number(options.reddit_n))
+      if (options.quora) fetchQuora(searchQuery, Number(options.quora_n))
       if (options.netspeak) fetchNetSpeak(searchQuery)
       if (options.moedict) fetchMoeDict(searchQuery)
       if (options.daizhige) fetchDaizhige(searchQuery, Number(options.daizhige_n))
