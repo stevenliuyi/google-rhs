@@ -17,7 +17,7 @@ function fetchMoeDict(searchQuery) {
         'salt': salt,
         'sign': sign.substring(1, sign.length-1)
       }
-      fetch(`https://cors-anywhere.herokuapp.com/http://api.fanyi.baidu.com/api/trans/vip/translate?${queryParams(params,false)}`)
+      fetch(`https://cors-anywhere.herokuapp.com/http://api.fanyi.baidu.com/api/trans/vip/translate?${queryParams(params)}`)
         .then(handleAPIErrors)
         .then(res => res.json())
         .then(data => {

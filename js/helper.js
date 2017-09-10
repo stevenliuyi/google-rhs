@@ -16,7 +16,7 @@ window.showResults = function(results, fillContent, footnote_text, options) {
 }
 
 
-window.queryParams = function(params, encode=true) {
+window.queryParams = function(params, encode=false) {
   return Object.keys(params)
            .map(k => encode ? encodeURIComponent(k) + '=' + encodeURIComponent(params[k]) : k + '=' + params[k])
            .join('&');

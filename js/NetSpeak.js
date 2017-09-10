@@ -5,7 +5,7 @@ function fetchNetSpeak(searchQuery) {
     topk: 5
   }
 
-  fetch(`https://cors-anywhere.herokuapp.com/http://api.netspeak.org/netspeak3/search?${queryParams(params,false)}`)
+  fetch(`https://cors-anywhere.herokuapp.com/http://api.netspeak.org/netspeak3/search?${queryParams(params)}`)
     .then(handleAPIErrors)
     .then(res => res.json()).then( data => {
       if (data['4'].length > 1) {

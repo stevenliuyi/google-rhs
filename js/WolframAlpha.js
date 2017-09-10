@@ -16,7 +16,7 @@ function fetchWolframAlpha(searchQuery) {
     mag: 0.9
   }
 
-  fetch(`https://api.wolframalpha.com/v2/query?${queryParams(params,false)}`)
+  fetch(`https://api.wolframalpha.com/v2/query?${queryParams(params)}`)
     .then(handleAPIErrors)
     .then(res => res.text())
     .then(text => {
