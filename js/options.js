@@ -1,53 +1,21 @@
 // Saves options to chrome.storage.sync.
 function save_options() {
   // sources
-  let wikipedia = $('#wikipedia').prop('checked')
-  let wolfram = $('#wolfram').prop('checked')
-  let twitter = $('#twitter').prop('checked')
-  let baidu = $('#baidu').prop('checked')
-  let bing = $('#bing').prop('checked')
-  let netspeak = $('#netspeak').prop('checked')
-  let moedict = $('#moedict').prop('checked')
-  let reddit = $('#reddit').prop('checked')
-  let daizhige = $('#daizhige').prop('checked')
-  let quora = $('#quora').prop('checked')
-  let zhihu = $('#zhihu').prop('checked')
+  let checked = {}
+  Object.keys(sources.sources).map (source =>
+    checked[source] = $(`#${source}`).prop('checked') 
+  )
 
   // settings
-  let wikipedia_n = $('#wikipedia_n').val()
-  let wikipedia_lang = $('#wikipedia_lang').val()
-  let wolfram_type = $('#wolfram_type').val()
-  let twitter_n = $('#twitter_n').val()
-  let twitter_lang = $('#twitter_lang').val()
-  let baidu_lang = $('#baidu_lang').val()
-  let reddit_n = $('#reddit_n').val()
-  let daizhige_n = $('#daizhige_n').val()
-  let quora_n = $('#quora_n').val()
-  let zhihu_n = $('#zhihu_n').val()
+  let settings = {}
+  Object.keys(sources.settings_default).map( setting =>
+    settings[setting] = $(`#${setting}`).val()
+  )
 
   chrome.storage.sync.set({
-    wikipedia,
-    wolfram,
-    twitter,
-    baidu,
-    bing,
-    netspeak,
-    moedict,
-    reddit,
-    daizhige,
-    quora,
-    zhihu,
-    wikipedia_n,
-    wikipedia_lang,
-    wolfram_type,
-    twitter_n,
-    twitter_lang,
-    baidu_lang,
-    reddit_n,
-    daizhige_n,
-    quora_n,
-    zhihu_n
-  }, function() {
+    checked: checked,
+    settings: settings
+  },function() {
     // Update status to let user know options were saved.
     $('#status-alert').removeAttr('hidden')
     setTimeout(function() {
@@ -61,53 +29,18 @@ function save_options() {
 function restore_options() {
   // Use default values
   chrome.storage.sync.get({
-    wikipedia: true,
-    wolfram: true,
-    twitter: true,
-    baidu: false,
-    bing: false,
-    netspeak: false,
-    moedict: false,
-    reddit: false,
-    daizhige: false,
-    quora: false,
-    zhihu: false,
-    wikipedia_n: '3',
-    wikipedia_lang: {0:'en'},
-    wolfram_type: {0:'full'},
-    twitter_n: '3',
-    twitter_lang: {0:'en'},
-    baidu_lang: {0:'en'},
-    reddit_n: '3',
-    daizhige_n: '3',
-    quora_n: '3',
-    zhihu_n: '3'
+    checked: sources.checked_default,
+    settings: sources.settings_default
   }, function(items) {
     // sources
-    $('#wikipedia').prop('checked', items.wikipedia);
-    $('#wolfram').prop('checked', items.wolfram);
-    $('#twitter').prop('checked', items.twitter);
-    $('#baidu').prop('checked', items.baidu);
-    $('#bing').prop('checked', items.bing);
-    $('#netspeak').prop('checked', items.netspeak);
-    $('#moedict').prop('checked', items.moedict);
-    $('#reddit').prop('checked', items.reddit);
-    $('#daizhige').prop('checked', items.daizhige);
-    $('#quora').prop('checked', items.quora);
-    $('#zhihu').prop('checked', items.zhihu);
+    Object.keys(items.checked).map( source =>
+      $(`#${source}`).prop('checked', items.checked[source])
+    )
 
     // settings
-    $('#wikipedia_n').val(items.wikipedia_n)
-    $('#wikipedia_lang').val(items.wikipedia_lang)
-    $('#wolfram_type').val(items.wolfram_type)
-    $('#twitter_n').val(items.twitter_n)
-    $('#twitter_lang').val(items.twitter_lang)
-    $('#baidu_lang').val(items.baidu_lang)
-    $('#reddit_n').val(items.reddit_n)
-    $('#daizhige_n').val(items.daizhige_n)
-    $('#quora_n').val(items.quora_n)
-    $('#zhihu_n').val(items.zhihu_n)
-
+    Object.keys(items.settings).map( setting =>
+      $(`#${setting}`).val(items.settings[setting])
+    )
   });
 }
 
@@ -119,8 +52,11 @@ function toggle_page(event) {
       $('#sources-btn').addClass('active').siblings('button').removeClass('active')
       break
     case "settings-btn":
+      // find all sources with settings
+      const sources_with_settings = Array.from(new Set(Object.keys(sources.settings_default)
+        .map(setting=>setting.replace(/_.*/,''))))
       // hide settings for unselected sources
-      ['wikipedia', 'wolfram', 'twitter', 'baidu', 'reddit', 'daizhige', 'quora', 'zhihu'].map( source => {
+      sources_with_settings.map( source => {
         if ($(`#${source}`).prop('checked')) {
           $(`#${source}-settings`).removeAttr('hidden')
         } else {
@@ -136,77 +72,94 @@ function toggle_page(event) {
  
 }
 
-function load_wikipedia_lang() {
-  langs = ['ar', 'az', 'be', 'bg', 'ca', 'ce', 'ceb', 'cs', 'da', 'de', 'el', 'eo', 'es', 'et', 'eu', 'fa', 'gl', 'ja', 'ko', 'fi', 'fr', 'hi', 'hr', 'hu', 'hy', 'id', 'it', 'kk', 'min', 'ms', 'nl', 'no', 'nn', 'pl', 'pt', 'ro', 'ru', 'sh', 'simple', 'sk', 'sl', 'sr', 'sv', 'ta', 'th', 'tr', 'uk', 'ur', 'uz', 'vi', 'vo', 'war', 'zh', 'zh-min-nan', 'zh-yue']
+
+function load_source_lang(source, langs) {
+  // create <option/> for all languages
   langs.map ( lang => {
-    $('#wikipedia_lang').append(
+    $(`#${source}_lang`).append(
       $('<option/>', {
         value: lang,
-        id: `wikipedia_${lang}`,
+        id: `${source}_${lang}`,
         text: languageText(lang)
       })   
     )
   })
-  $('#wikipedia_lang option').sort((a,b) => (a.text.localeCompare(b.text))).appendTo('#wikipedia_lang')
-  $('#wikipedia_lang option').sort((a,b) => (a.text.localeCompare(b.text))).appendTo('#wikipedia_lang')
-  $('#wikipedia_lang').prepend(
+
+  // sort languages alphabetically
+  $(`#${source}_lang option`).sort((a,b) => (a.text.localeCompare(b.text))).appendTo(`#${source}_lang`)
+
+  // add English as the default language
+  $(`#${source}_lang`).prepend(
     $('<option/>', {
       value: 'en',
-      id: 'wikipedia_en',
+      id: `${source}_en`,
       text: 'English (default)',
       selected: ''
     })
   )
 }
 
-function load_twitter_lang() {
-  langs = ['ar', 'bn', 'cs', 'da', 'de', 'el', 'es', 'fa', 'fi', 'fil', 'fr', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'msa', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sv', 'th', 'tr', 'uk', 'ur', 'vi', 'zh-cn' ]
-  langs.map ( lang => {
-    $('#twitter_lang').append(
+function load_source_num(source) {
+  Array.from(Array(10).keys()).map( num => {
+    $(`#${source}_n`).append(
       $('<option/>', {
-        value: lang,
-        id: `twitter_${lang}`,
-        text: languageText(lang)
-      })   
-    )
+        value: num+1,
+        id: `${source}_${num+1}`,
+        text: num+1
+      })
+    ) 
   })
-  $('#twitter_lang option').sort((a,b) => (a.text.localeCompare(b.text))).appendTo('#twitter_lang')
-  $('#twitter_lang').prepend(
-    $('<option/>', {
-      value: 'en',
-      id: 'twitter_en',
-      text: 'English (default)',
-      selected: ''
-    })
-  )
+
+  // default value
+  $(`#${source}_3`).attr('selected', '')
 }
 
-function load_baidu_lang() {
-  langs = ['ara', 'bul', 'cs', 'cht', 'dan', 'de', 'el', 'est', 'fin', 'fra', 'hu', 'kor', 'it', 'jp', 'nl', 'pt', 'rom', 'slo', 'spa', 'swe', 'th', 'ru', 'vie', 'wyw', 'yue', 'zh']
-  langs.map ( lang => {
-    $('#baidu_lang').append(
-      $('<option/>', {
-        value: lang,
-        id: `baidu_${lang}`,
-        text: languageText(lang)
-      })   
-    )
+function add_sources() {
+  let col1 = $('<div/>', { class: 'col' })
+  let col2 = $('<div/>', { class: 'col' })
+  let odd = true
+
+  Object.keys(sources.sources).map( source => {
+      let label = $('<label/>', { class: 'form-check-label' })
+
+      label.append($('<input/>', {
+        class: 'form-check-input',
+        type: 'checkbox',
+        id: source
+      })).append(sources.sources[source])
+
+      let check = $('<div/>', { class: 'form-check' })
+      check.append(label)
+
+      if (odd) {
+        col1.append(check)
+        odd = false
+      } else {
+        col2.append(check)
+        odd = true
+      }
   })
-  $('#baidu_lang option').sort((a,b) => (a.text.localeCompare(b.text))).appendTo('#baidu_lang')
-  $('#baidu_lang').prepend(
-    $('<option/>', {
-      value: 'en',
-      id: 'baidu_en',
-      text: 'English (default)',
-      selected: ''
-    })
-  )
+
+  $('#sources-row').append(col1).append(col2)
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
-  load_wikipedia_lang()
-  load_twitter_lang()
-  load_baidu_lang()
+  add_sources()
+
+  // add language settings
+  Object.keys(sources.languages).map( source => {
+    load_source_lang(source, sources.languages[source])
+  })
+
+  // add settings for number of items
+  const sources_num = Object.keys(sources.settings_default)
+    .filter(setting => setting.match(/_n/))
+    .map(setting => setting.substring(0,setting.length-2))
+  sources_num.map( source => {
+    load_source_num(source)
+  })
+
   restore_options()
 });
 document.getElementById('save').addEventListener('click', save_options);

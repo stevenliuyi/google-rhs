@@ -33,6 +33,7 @@
     "matches": ["*://*.google.com/*"],
     "css": ["css/rhs.css"],
     "js": ["js/jquery.min.js",
+           "js/sources.js",
            "js/helper.js",
            "js/Wikipedia.js",
            "js/BingDictionary.js",

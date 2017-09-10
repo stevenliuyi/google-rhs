@@ -33,78 +33,7 @@
         <!-- sources page -->
         <div class="form-group" id="sources">
           <label>Choose the sources you would like to show at the right-hand side of the Google search results:</label>
-          <div class="row">
-            <div class="col">
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="wikipedia" checked>
-                  Wikipedia
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="twitter" checked>
-                  Twitter
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="bing">
-                  Bing Dictionary
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="zhihu">
-                  Zhihu
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="moedict">
-                  MoeDict
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="daizhige">
-                  Daizhige
-                </label>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="wolfram" checked>
-                  Wolfram Alpha
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="reddit">
-                  Reddit
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="quora">
-                  Quora
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="baidu">
-                  Baidu Translate
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" id="netspeak">
-                  Netspeak
-                </label>
-              </div>
-            </div>
-          </div>
+          <div class="row" id="sources-row"></div>
         </div>
 
         <!-- settings page -->
@@ -114,18 +43,7 @@
             <p class="h5">Wikipedia</p>
             <div class="form-group row">
               <label class="col-4 col-form-label">Number of entries</label>
-              <select class="col-7 form-control" id="wikipedia_n">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3" selected>3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-                 <option value="7">7</option>
-                 <option value="8">8</option>
-                 <option value="9">9</option>
-                 <option value="10">10</option>
-              </select>
+              <select class="col-7 form-control" id="wikipedia_n"></select>
             </div>
             <div class="form-group row">
               <div class="col-4">
@@ -139,7 +57,7 @@
             <p class="h5">Wolfram Alpha</p>
             <div class="form-group row">
               <div class="col-4">
-              <label class="col-form-label">API Types</label>
+              <label class="col-form-label">Answer Types</label>
               <label class="col-form-label text-muted small">Hold Ctrl or Shift to select more than one</label>
               </div>
               <select multiple class="col-7 form-control" id="wolfram_type">
@@ -152,18 +70,7 @@
             <p class="h5">Twitter</p>
             <div class="form-group row">
               <label class="col-4 col-form-label">Number of tweets</label>
-              <select class="col-7 form-control" id="twitter_n">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3" selected>3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-                 <option value="7">7</option>
-                 <option value="8">8</option>
-                 <option value="9">9</option>
-                 <option value="10">10</option>
-              </select>
+              <select class="col-7 form-control" id="twitter_n"></select>
             </div>
             <div class="form-group row">
               <div class="col-4">
@@ -177,54 +84,21 @@
             <p class="h5">Reddit</p>
             <div class="form-group row">
               <label class="col-4 col-form-label">Number of items</label>
-              <select class="col-7 form-control" id="reddit_n">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3" selected>3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-                 <option value="7">7</option>
-                 <option value="8">8</option>
-                 <option value="9">9</option>
-                 <option value="10">10</option>
-              </select>
+              <select class="col-7 form-control" id="reddit_n"></select>
             </div>
           </div>
           <div id="quora-settings">
             <p class="h5">Quora</p>
             <div class="form-group row">
               <label class="col-4 col-form-label">Number of questions</label>
-              <select class="col-7 form-control" id="quora_n">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3" selected>3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-                 <option value="7">7</option>
-                 <option value="8">8</option>
-                 <option value="9">9</option>
-                 <option value="10">10</option>
-              </select>
+              <select class="col-7 form-control" id="quora_n"></select>
             </div>
           </div>
           <div id="zhihu-settings">
             <p class="h5">Zhihu</p>
             <div class="form-group row">
               <label class="col-4 col-form-label">Number of questions</label>
-              <select class="col-7 form-control" id="zhihu_n">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3" selected>3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-                 <option value="7">7</option>
-                 <option value="8">8</option>
-                 <option value="9">9</option>
-                 <option value="10">10</option>
-              </select>
+              <select class="col-7 form-control" id="zhihu_n"></select>
             </div>
           </div>
           <div id="baidu-settings">
@@ -241,18 +115,7 @@
             <p class="h5">Daizhige</p>
             <div class="form-group row">
               <label class="col-4 col-form-label">Number of items</label>
-              <select class="col-7 form-control" id="daizhige_n">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3" selected>3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-                 <option value="7">7</option>
-                 <option value="8">8</option>
-                 <option value="9">9</option>
-                 <option value="10">10</option>
-              </select>
+              <select class="col-7 form-control" id="daizhige_n"></select>
             </div>
           </div>
         </div>
@@ -260,6 +123,7 @@
       
     </div>
 
+    <script src="../js/sources.js"></script>
     <script src="../js/helper.js"></script>
     <script src="../js/options.js"></script>
   </body>
