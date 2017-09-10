@@ -20,13 +20,15 @@
       netspeak: false,
       moedict: false,
       reddit: false,
+      daizhige: false,
       wikipedia_n: '3',
       wikipedia_lang: {0:'en'},
       wolfram_type: {0:'full'},
       twitter_n: '3',
       twitter_lang: {0:'en'},
       baidu_lang:{0:'en'},
-      reddit_n: '3'
+      reddit_n: '3',
+      daizhige_n: '3'
     }, function(options) {
       if (options.wikipedia) {
         Object.values(options.wikipedia_lang).map(lang =>
@@ -53,6 +55,7 @@
       if (options.reddit) fetchReddit(searchQuery, Number(options.reddit_n))
       if (options.netspeak) fetchNetSpeak(searchQuery)
       if (options.moedict) fetchMoeDict(searchQuery)
+      if (options.daizhige) fetchDaizhige(searchQuery, Number(options.daizhige_n))
     })
 
   })

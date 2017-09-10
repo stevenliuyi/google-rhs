@@ -9,6 +9,7 @@ function save_options() {
   let netspeak = $('#netspeak').prop('checked')
   let moedict = $('#moedict').prop('checked')
   let reddit = $('#reddit').prop('checked')
+  let daizhige = $('#daizhige').prop('checked')
 
   // settings
   let wikipedia_n = $('#wikipedia_n').val()
@@ -18,6 +19,7 @@ function save_options() {
   let twitter_lang = $('#twitter_lang').val()
   let baidu_lang = $('#baidu_lang').val()
   let reddit_n = $('#reddit_n').val()
+  let daizhige_n = $('#daizhige_n').val()
 
   chrome.storage.sync.set({
     wikipedia,
@@ -28,13 +30,15 @@ function save_options() {
     netspeak,
     moedict,
     reddit,
+    daizhige,
     wikipedia_n,
     wikipedia_lang,
     wolfram_type,
     twitter_n,
     twitter_lang,
     baidu_lang,
-    reddit_n
+    reddit_n,
+    daizhige_n,
   }, function() {
     // Update status to let user know options were saved.
     $('#status-alert').removeAttr('hidden')
@@ -57,13 +61,15 @@ function restore_options() {
     netspeak: false,
     moedict: false,
     reddit: false,
+    daizhige: false,
     wikipedia_n: '3',
     wikipedia_lang: {0:'en'},
     wolfram_type: {0:'full'},
     twitter_n: '3',
     twitter_lang: {0:'en'},
     baidu_lang: {0:'en'},
-    reddit_n: '3'
+    reddit_n: '3',
+    daizhige_n: '3'
   }, function(items) {
     // sources
     $('#wikipedia').prop('checked', items.wikipedia);
@@ -74,6 +80,7 @@ function restore_options() {
     $('#netspeak').prop('checked', items.netspeak);
     $('#moedict').prop('checked', items.moedict);
     $('#reddit').prop('checked', items.reddit);
+    $('#daizhige').prop('checked', items.daizhige);
 
     // settings
     $('#wikipedia_n').val(items.wikipedia_n)
@@ -83,6 +90,7 @@ function restore_options() {
     $('#twitter_lang').val(items.twitter_lang)
     $('#baidu_lang').val(items.baidu_lang)
     $('#reddit_n').val(items.reddit_n)
+    $('#daizhige_n').val(items.daizhige_n)
   });
 }
 

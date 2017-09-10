@@ -20,10 +20,11 @@
     "https://api.wolframalpha.com/*",
     "https://xtk.azurewebsites.net/*",
     "https://api.twitter.com/*",
-    "https://www.moedict.tw/*"
+    "https://www.moedict.tw/*",
+    "http://www.daizhige.org/*"
   ],
   "background": {
-    "scripts": ["js/background.js"],
+    "scripts": ["js/background.js","js/fetch.js"],
     "persistent": false
   },
   "content_scripts": [{
@@ -38,7 +39,8 @@
            "js/NetSpeak.js",
            "js/Twitter.js",
            "js/MoeDict.js",
-           "js/Reddit.js"]
+           "js/Reddit.js",
+           "js/Daizhige.js"]
   }],
   "icons": {
     "16": "icon/icon-16.png",
