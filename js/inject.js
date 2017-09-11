@@ -17,15 +17,26 @@
     }, function(options) {
       if (options.checked.wikipedia) {
         Object.values(options.settings.wikipedia_lang).map(lang =>
-          fetchWikipedia(searchQuery, lang, Number(options.settings.wikipedia_n)))
+          fetchWikimedia(searchQuery, lang, Number(options.settings.wikipedia_n), 'wikipedia'))
       }
 
-      if (options.checked.bing) fetchBingDictionary(searchQuery)
 
       if (options.checked.wolfram && Object.values(options.settings.wolfram_type).includes('short'))
         fetchWolframAlphaShortAnswer(searchQuery)
       if (options.checked.wolfram && Object.values(options.settings.wolfram_type).includes('full'))
         fetchWolframAlpha(searchQuery)
+
+      if (options.checked.bing) fetchBingDictionary(searchQuery)
+
+      if (options.checked.wiktionary) {
+        Object.values(options.settings.wiktionary_lang).map(lang =>
+          fetchWikimedia(searchQuery, lang, Number(options.settings.wiktionary_n), 'wiktionary'))
+      }
+
+      if (options.checked.wikisource) {
+        Object.values(options.settings.wikisource_lang).map(lang =>
+          fetchWikimedia(searchQuery, lang, Number(options.settings.wikisource_n), 'wikisource'))
+      }
 
       if (options.checked.twitter) {
         Object.values(options.settings.twitter_lang).map(lang =>

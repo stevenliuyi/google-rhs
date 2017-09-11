@@ -35,7 +35,7 @@
     "js": ["js/jquery.min.js",
            "js/sources.js",
            "js/helper.js",
-           "js/Wikipedia.js",
+           "js/Wikimedia.js",
            "js/BingDictionary.js",
            "js/BaiduTranslate.js",
            "js/WolframAlpha.js",

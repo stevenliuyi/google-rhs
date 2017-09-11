@@ -1,4 +1,4 @@
-function fetchWikipedia(searchQuery, lang, num) {
+function fetchWikimedia(searchQuery, lang, num, project) {
   let lang_text = languageText(lang)
 
   let params = {
@@ -10,24 +10,24 @@ function fetchWikipedia(searchQuery, lang, num) {
     'origin': '*'
   }
 
-  fetch(`https://${lang}.wikipedia.org/w/api.php?${queryParams(params)}`)
+  fetch(`https://${lang}.${project}.org/w/api.php?${queryParams(params)}`)
     .then(handleAPIErrors)
     .then(res => res.json())
     .then(data => (data.query.search.length !== 0) &&
             showResults(data.query.search,
-                              WikipediaContent,
-                              `from ${lang_text} Wikipedia`,
-                              lang))
+                              WikimediaContent,
+                              `from ${lang_text} ${sources.sources[project]}`,
+                              {lang, project}))
     .catch(e => console.log(e))
 }
 
-function WikipediaContent(results, content, lang) {
+function WikimediaContent(results, content, options) {
   results.map(result => {
     let item = $('<div/>', { class: 'rhs-item' })
 
     let title = $('<div/>').append(
       $('<a/>', {
-        href: `https://${lang}.wikipedia.org/wiki?curid=${result.pageid}`,
+        href: `https://${options.lang}.${options.project}.org/wiki?curid=${result.pageid}`,
         text: result.title
       })
     )
