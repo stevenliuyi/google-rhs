@@ -51,6 +51,7 @@
       if (options.checked.reddit) fetchReddit(searchQuery, Number(options.settings.reddit_n))
       if (options.checked.quora) fetchQuora(searchQuery, Number(options.settings.quora_n))
       if (options.checked.zhihu) fetchZhihu(searchQuery, Number(options.settings.zhihu_n))
+      if (options.checked.wechat) fetchWechat(searchQuery, Number(options.settings.wechat_n))
       if (options.checked.netspeak) fetchNetSpeak(searchQuery)
       if (options.checked.moedict) fetchMoeDict(searchQuery)
       if (options.checked.daizhige) fetchDaizhige(searchQuery, Number(options.settings.daizhige_n))

@@ -23,7 +23,7 @@
     "https://www.moedict.tw/*",
     "http://www.daizhige.org/*",
     "https://www.quora.com/*",
-    "https://*.sogou.com/*"
+    "*://*.sogou.com/*"
   ],
   "background": {
     "scripts": ["js/background.js","js/fetch.js"],
@@ -45,7 +45,8 @@
            "js/Reddit.js",
            "js/Daizhige.js",
            "js/Quora.js",
-           "js/Zhihu.js"]
+           "js/Zhihu.js",
+           "js/Wechat.js"]
   }],
   "icons": {
     "16": "icon/icon-16.png",

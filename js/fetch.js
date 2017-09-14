@@ -3,12 +3,20 @@
 function fetchSource(request, sender, sendResponse) {
   switch(request.source) {
     case 'Daizhige':
-     fetch(`http://www.daizhige.org/result.php?query=${request.query}`)
-       .then(res => res.text())
-       .then(html_string => {
-          sendResponse({ html_string })
-       })
-     break
+      fetch(`http://www.daizhige.org/result.php?query=${request.query}`)
+        .then(res => res.text())
+        .then(html_string => {
+           sendResponse({ html_string })
+        })
+      break
+
+    case 'Wechat':
+      fetch(`http://weixin.sogou.com/weixin?type=2&query=${request.query}`)
+        .then(res => res.text())
+        .then(html_string => {
+           sendResponse({ html_string })
+        })
+      break
     
     default:
       return true

@@ -11,6 +11,7 @@ let sources = {
     "zhihu": "Zhihu",
     "baidu": "Baidu Translate",
     "moedict": "Moedict",
+    "wechat": "Wechat Public",
     "netspeak": "NetSpeak",
     "daizhige": "Daizhige"
   },
@@ -36,23 +37,25 @@ let sources = {
     "quora": false,
     "zhihu": false,
     "wiktionary": false,
-    "wikisource": false
+    "wikisource": false,
+    "wechat": false
   },
 
   "settings_default": {
-    wikipedia_n: '3',
-    wikipedia_lang: {0:'en'},
-    wolfram_type: 'full',
-    twitter_n: '3',
-    twitter_lang: {0:'en'},
-    baidu_lang: {0:'en'},
-    reddit_n: '3',
-    daizhige_n: '3',
-    quora_n: '3',
-    zhihu_n: '3',
-    wiktionary_n: '3',
-    wiktionary_lang: {0:'en'},
-    wikisource_n: '3',
-    wikisource_lang: {0:'en'}
+    "wikipedia_n": "3",
+    "wikipedia_lang": {0:"en"},
+    "wolfram_type": "full",
+    "twitter_n": "3",
+    "twitter_lang": {0:"en"},
+    "baidu_lang": {0:"en"},
+    "reddit_n": "3",
+    "daizhige_n": "3",
+    "quora_n": "3",
+    "zhihu_n": "3",
+    "wiktionary_n": "3",
+    "wiktionary_lang": {0:"en"},
+    "wikisource_n": "3",
+    "wikisource_lang": {0:"en"},
+    "wechat_n": "3"
   }
 }
