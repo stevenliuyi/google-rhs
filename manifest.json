@@ -23,7 +23,8 @@
     "https://www.moedict.tw/*",
     "http://www.daizhige.org/*",
     "https://www.quora.com/*",
-    "*://*.sogou.com/*"
+    "*://*.sogou.com/*",
+    "https://dict-co.iciba.com/*"
   ],
   "background": {
     "scripts": ["js/background.js","js/fetch.js"],
@@ -46,7 +47,8 @@
            "js/Daizhige.js",
            "js/Quora.js",
            "js/Zhihu.js",
-           "js/Wechat.js"]
+           "js/Wechat.js",
+           "js/Iciba.js"]
   }],
   "icons": {
     "16": "icon/icon-16.png",

@@ -6,6 +6,7 @@ let sources = {
     "reddit": "Reddit",
     "wiktionary": "Wiktionary",
     "wikisource": "Wikisource",
+    "iciba": "iCiba",
     "bing": "Bing Dictionary",
     "quora": "Quora",
     "zhihu": "Zhihu",
@@ -38,7 +39,8 @@ let sources = {
     "zhihu": false,
     "wiktionary": false,
     "wikisource": false,
-    "wechat": false
+    "wechat": false,
+    "iciba": false
   },
 
   "settings_default": {
