@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Right-hand Side",
-  "description": "This extension integrates search results from different sources (e.g. Wikipeida) into Google search results",
+  "description": "This extension integrates search results from different sources (e.g. Wikipeida, Wolfram Alpha, Twitter) into Google search results",
   "version": "1.0",
 
   "page_action": {
