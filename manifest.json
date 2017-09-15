@@ -1,9 +1,15 @@
 {
   "manifest_version": 2,
-
   "name": "Right-hand Side",
+  "version": "0.1",
+
   "description": "This extension integrates search results from different sources (e.g. Wikipeida, Wolfram Alpha, Twitter) into Google search results",
-  "version": "1.0",
+  "icons": {
+    "16": "icon/icon-16.png",
+    "32": "icon/icon-32.png",
+    "48": "icon/icon-48.png",
+    "128": "icon/icon-128.png"
+  },
 
   "page_action": {
     "default_icon": {
@@ -13,19 +19,8 @@
     },
     "default_popup": "html/popup.html"
   },
-  "permissions": [
-    "tabs",
-    "storage",
-    "*://*.google.com/*",
-    "https://api.wolframalpha.com/*",
-    "https://xtk.azurewebsites.net/*",
-    "https://api.twitter.com/*",
-    "https://www.moedict.tw/*",
-    "http://www.daizhige.org/*",
-    "https://www.quora.com/*",
-    "*://*.sogou.com/*",
-    "https://dict-co.iciba.com/*"
-  ],
+
+  "author": "Steven Liu",
   "background": {
     "scripts": ["js/background.js","js/fetch.js"],
     "persistent": false
@@ -50,14 +45,23 @@
            "js/Wechat.js",
            "js/Iciba.js"]
   }],
-  "icons": {
-    "16": "icon/icon-16.png",
-    "32": "icon/icon-32.png",
-    "48": "icon/icon-48.png",
-    "128": "icon/icon-128.png"
-  },
+  "homepage_url": "https://github.com/stevenliuyi/google-rhs",
   "options_ui":{
     "page": "html/options.html",
     "chrome_style": false
-  }
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "*://*.google.com/*",
+    "https://api.wolframalpha.com/*",
+    "https://xtk.azurewebsites.net/*",
+    "https://api.twitter.com/*",
+    "https://www.moedict.tw/*",
+    "http://www.daizhige.org/*",
+    "https://www.quora.com/*",
+    "*://*.sogou.com/*",
+    "https://dict-co.iciba.com/*"
+  ],
+  "short_name": "RHS"
 }
