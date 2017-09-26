@@ -3,6 +3,7 @@ function onUpdated(tabId, changeInfo, tab) {
   // update the extension state and return nothing when
   // the extension is disabled
   if (!updateExtensionState(tab)) return
+
   console.log('RHS is running')
 
   chrome.storage.local.get({
@@ -61,6 +62,7 @@ function setBadgeText() {
 // enable/disable the extension
 function updateExtensionState(tab) {
   if (tab === undefined) return false
+  if (!tab.active) return false
 
   if (tab.url.indexOf('.google.') !== -1) {
     chrome.browserAction.enable(tab.id)
