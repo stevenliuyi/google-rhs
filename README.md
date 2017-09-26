@@ -1,8 +1,22 @@
 # ![Logo](icon/icon-32.png) Right-hand Side
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/fmdnfbdnbcglagflegehgacalfmgejhe.svg)](https://chrome.google.com/webstore/detail/right-hand-side-for-googl/fmdnfbdnbcglagflegehgacalfmgejhe)
+
 Right-hand Side is a Chrome extension that integrates contents from different sources (e.g. Wikipedia, Wolfram Alpha, Twitter) into Google search results.
 
 All the contents are located at the right-hand side of the Google results page (that's where the extension name comes from), and have the same UI as Google's own [Knowledge Graph](https://en.wikipedia.org/wiki/Knowledge_Graph) results to create a unified and consistent user experience.
+
+## Installation
+### Install from Chrome Web Store
+The easy way is directly installing it from Chrome Web Store. Just go [here](https://chrome.google.com/webstore/detail/right-hand-side-for-googl/fmdnfbdnbcglagflegehgacalfmgejhe) and click the `Add to Chrome` button.
+
+### Install manually
+You could also install the extension manually as follows:
+
+- Clone this repository: `git clone https://github.com/stevenliuyi/google-rhs`;
+- Open Google Chrome and go to `chrome://extensions`;
+- Check `Develop mode`;
+- Click the `Load unpacked extension...` button and choose the repository folder you just cloned.
 
 ## Usage
 It's quite simple! Just google any keyword as you normally would, and the results will appear at the right-hand side.

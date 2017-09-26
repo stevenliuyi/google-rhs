@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Right-hand Side",
+  "name": "Right-hand Side for Google Search™",
   "version": "0.1",
 
   "description": "This extension integrates search results from different sources (e.g. Wikipeida, Wolfram Alpha, Twitter) into Google search results",
