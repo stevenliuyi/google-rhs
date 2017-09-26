@@ -62,7 +62,7 @@ function setBadgeText() {
 function updateExtensionState(tab) {
   if (tab === undefined) return false
 
-  if (tab.url.indexOf('google') !== -1) {
+  if (tab.url.indexOf('.google.') !== -1) {
     chrome.browserAction.enable(tab.id)
     chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] })
     return true
