@@ -1,8 +1,9 @@
 function onUpdated(tabId, changeInfo, tab) {
-  
-  if (tab.url.indexOf('google') !== -1) {
-    chrome.pageAction.show(tab.id)
-  }
+
+  // update the extension state and return nothing when
+  // the extension is disabled
+  if (!updateExtensionState(tab)) return
+  console.log('RHS is running')
 
   chrome.storage.local.get({
     paused: false
@@ -46,5 +47,35 @@ function getSearchQuery(tabId, changeInfo, tab) {
   }
 }
 
+function onActivated(evt) {
+  chrome.tabs.get(evt.tabId, tab => updateExtensionState(tab))
+}
+
+// set badge text
+function setBadgeText() {
+  chrome.storage.local.get({ paused: false }, function(result) {
+    chrome.browserAction.setBadgeText({ text: result.paused ? 'OFF' : 'ON' })
+  })
+}
+
+// enable/disable the extension
+function updateExtensionState(tab) {
+  if (tab === undefined) return false
+
+  if (tab.url.indexOf('google') !== -1) {
+    chrome.browserAction.enable(tab.id)
+    chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] })
+    return true
+  } else {
+    chrome.browserAction.disable(tab.id)
+    chrome.browserAction.setBadgeBackgroundColor({ color: [187, 187, 187, 255] })
+    return false
+  } 
+}
+
+chrome.runtime.onStartup.addListener(setBadgeText)
+chrome.runtime.onInstalled.addListener(setBadgeText)
+
 chrome.tabs.onUpdated.addListener(onUpdated)
 chrome.tabs.onHighlighted.addListener(onUpdated)
+chrome.tabs.onActivated.addListener(onActivated)
