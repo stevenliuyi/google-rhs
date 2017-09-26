@@ -22,10 +22,12 @@ function IcibaContent(results, content) {
     html: `<a href="http://www.iciba.com/${results.word_name}">${results.word_name}</a>`
   })
   
+  let ph_am = results.symbols[0].ph_am
+  let ph_en = results.symbols[0].ph_en
   let pronunciation = $('<div/>', {
     class: 'grey-text',
-    html: (results.symbols[0].ph_am !== undefined) ? 
-            `US [${results.symbols[0].ph_am}] UK[${results.symbols[0].ph_en}]` :
+    html: (ph_am !== undefined && ph_am !== '') ? 
+            `US [${ph_am}] UK[${ph_en}]` :
             ""
   })
 
