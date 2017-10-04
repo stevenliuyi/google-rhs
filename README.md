@@ -42,5 +42,6 @@ Currently, the extension supports the following sources, and you are able to sel
 | [Baidu Translate](https://fanyi.baidu.com/) (百度翻译) | multilingual machine translation service |
 | [Moedit](https://www.moedict.tw/) (萌典) | online Chinese dictionary |
 | [Wechat Public Platform](https://mp.weixin.qq.com/) (微信公众平台) | social marketing platform |
+| [CNKI Reference Books](http://gongjushu.cnki.net/) (知网工具书库) | Chinese reference books |
 | [NetSpeak](http://www.netspeak.org/)  | English language usage search engine |
 | [Daizhige](http://www.daizhige.org/) (殆知阁) | Classical Chinese digital library |

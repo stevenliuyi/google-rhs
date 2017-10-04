@@ -17,6 +17,26 @@ function fetchSource(request, sender, sendResponse) {
            sendResponse({ html_string })
         })
       break
+
+    case 'CnkiSearch':
+      fetch(`http://gongjushu.cnki.net/refbook/basicsearch.aspx?kw=${request.query}`, {
+          credentials: 'include',
+          'Cookie': `inputkw=${request.query}`
+        })
+        .then(res => res.text())
+        .then(html_string => {
+          sendResponse({ html_string })
+        })
+      break
+
+    case 'CnkiBrief':
+      fetch(request.url, {
+        credentials: 'include',
+        'Cookie': `inputkw=${request.query}`
+      }).then(res => res.text())
+        .then(html_string => {
+          sendResponse({ html_string })
+        })
     
     default:
       return true

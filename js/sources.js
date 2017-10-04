@@ -13,6 +13,7 @@ let sources = {
     "baidu": "Baidu Translate",
     "moedict": "Moedict",
     "wechat": "Wechat Public",
+    "cnki": "CNKI Reference Books",
     "netspeak": "NetSpeak",
     "daizhige": "Daizhige"
   },
@@ -40,7 +41,8 @@ let sources = {
     "wiktionary": false,
     "wikisource": false,
     "wechat": false,
-    "iciba": false
+    "iciba": false,
+    "cnki": false
   },
 
   "settings_default": {
@@ -58,6 +60,7 @@ let sources = {
     "wiktionary_lang": {0:"en"},
     "wikisource_n": "3",
     "wikisource_lang": {0:"en"},
-    "wechat_n": "3"
+    "wechat_n": "3",
+    "cnki_n": "3"
   }
 }

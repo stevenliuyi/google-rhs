@@ -43,7 +43,8 @@
            "js/Quora.js",
            "js/Zhihu.js",
            "js/Wechat.js",
-           "js/Iciba.js"]
+           "js/Iciba.js",
+           "js/Cnki.js"]
   }],
   "homepage_url": "https://github.com/stevenliuyi/google-rhs",
   "options_ui":{
@@ -61,7 +62,8 @@
     "http://www.daizhige.org/*",
     "https://www.quora.com/*",
     "*://*.sogou.com/*",
-    "https://dict-co.iciba.com/*"
+    "https://dict-co.iciba.com/*",
+    "http://gongjushu.cnki.net/*"
   ],
   "short_name": "RHS"
 }
